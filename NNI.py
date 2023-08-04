@@ -6,7 +6,6 @@ import math
 import csv
 
 def cal_NNI(det, width, height):
-    #print(width1, height1)
     NNI = 0
     det = det.values.tolist()
     area = width*height
@@ -39,9 +38,6 @@ for i in range(len(labels_path)):
     df = pd.read_csv(labels_path[i], delimiter='\s+', header=None, names=['center_x_r', 'center_y_r', 'w_r', 'h_r'])
     
     df = df[['center_x_r', 'center_y_r']]
-#     df = pd.concat([labels_df, df], ignore_index=True)
-    # df['center_x_r'] *= width
-    # df['center_y_r'] *= height
     df.columns = ['c_x', 'c_y']
     nni = cal_NNI(df, width, height)
     if nni == 0:
@@ -53,17 +49,8 @@ for i in range(len(labels_path)):
 min_NNI = min(NNI)
 max_NNI = max(NNI)
 
-print(f'max = {max_NNI}, min = {min_NNI}')
-# Test
-# df = pd.read_csv(labels_path[0], delimiter='\s+', header=None, names=['center_x_r', 'center_y_r', 'w_r', 'h_r'])
-# df = df[['center_x_r', 'center_y_r']]
-# #     df = pd.concat([labels_df, df], ignore_index=True)
-# # df['center_x_r'] *= width
-# # df['center_y_r'] *= height
-# df.columns = ['c_x', 'c_y']
-# NNI.append(cal_NNI(df, width, height))
+# print(f'max = {max_NNI}, min = {min_NNI}')
 
-# print(NNI[0:5])
 
 output_file = 'NNI.csv'
     
