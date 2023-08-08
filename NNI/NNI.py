@@ -5,6 +5,7 @@ import os
 import math
 import csv
 
+
 def cal_NNI(det, width, height):
     NNI = 0
     det = det.values.tolist()
@@ -21,10 +22,11 @@ def cal_NNI(det, width, height):
 
     return NNI
 
+
 width = 1920
 height = 1080
 folder = "bbox_7120_230512_230614"
-result_dir = f'../AgroONE/{folder}/bbox/'
+result_dir = f'bbox'
 labels_path = np.array([])
 for root, dirs, files in os.walk(result_dir):
     for name in files:
