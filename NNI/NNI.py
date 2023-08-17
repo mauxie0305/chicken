@@ -4,7 +4,9 @@ import pandas as pd
 import os
 import math
 import csv
+import time
 
+start_cpu_time = time.process_time()
 
 def cal_NNI(det, width, height):
     NNI = 0
@@ -25,8 +27,8 @@ def cal_NNI(det, width, height):
 
 width = 1920
 height = 1080
-folder = "bbox_7120_230512_230614"
-result_dir = f'bbox'
+# folder = "bbox_7120_230512_230614"
+result_dir = f'/app/bboxs'
 labels_path = np.array([])
 for root, dirs, files in os.walk(result_dir):
     for name in files:
@@ -60,3 +62,12 @@ with open(output_file, 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['file name', 'NNI'])
     writer.writerows(zip(file_name, NNI)) 
+
+for i in range(1000000):
+    pass
+
+end_cpu_time = time.process_time()
+
+elapsed_cpu_time = end_cpu_time - start_cpu_time
+
+print(f"Elapsed CPU time: {elapsed_cpu_time:.4f} seconds")
